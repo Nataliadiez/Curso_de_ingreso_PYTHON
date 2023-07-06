@@ -5,13 +5,14 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
-nombre:
-apellido:
+Corregido con buenas prácticas
+nombre: Natalia
+apellido: Diez
 ---
 Ejercicio: entrada_salida_07
 ---
 Enunciado:
-Al presionar el botón  que corresponde a cada operación (suma, resta, multiplicación, y división), 
+Al presionar el botón que corresponde a cada operación (suma, resta, multiplicación, y división), 
 se deberán obtener los valores contenidos en las cajas de texto (txtOperadorA y txtOperadorB), 
 transformarlos en números enteros, realizar dicha operación y luego mostrar el resultado 
 de la misma utilizando el Dialog Alert. Ej: "El resultado de la …… es: 755"  
@@ -49,17 +50,43 @@ class App(customtkinter.CTk):
         self.btn_dividir = customtkinter.CTkButton(master=self, text="Dividir", command=self.btn_dividir_on_click)
         self.btn_dividir.grid(row=5, pady=10, columnspan=2, sticky="nsew")
 
+        
+
     def btn_sumar_on_click(self):
-        pass
+        operadorA = self.txt_operador_a.get()
+        operadorA_float = float(operadorA)
+        operadorB = self.txt_operador_b.get()
+        operadorB_float = float(operadorB)
+        suma = operadorA_float + operadorB_float
+        alert(title = "Resultado", message = "El resultado de la suma es: " + "{:.2f}".format(suma))
 
     def btn_restar_on_click(self):
-        pass
+        operadorA = self.txt_operador_a.get()
+        operadorA_float = float(operadorA)
+        operadorB = self.txt_operador_b.get()
+        operadorB_float = float(operadorB)
+        resta = operadorA_float - operadorB_float
+        alert(title = "Resultado", message = "El resultado de la resta es: " + "{:.2f}".format(resta))
 
     def btn_multiplicar_on_click(self):
-        pass
+        operadorA = self.txt_operador_a.get()
+        operadorA_float = float(operadorA)
+        operadorB = self.txt_operador_b.get()
+        operadorB_float = float(operadorB)
+        multiplicacion = operadorA_float * operadorB_float
+        alert(title = "Resultado", message = "El resultado de la multiplicacion es: " + "{:.2f}".format(multiplicacion))
 
     def btn_dividir_on_click(self):
-        pass
+        operadorA = self.txt_operador_a.get()
+        operadorA_float = float(operadorA)
+        operadorB = self.txt_operador_b.get()
+        operadorB_float = float(operadorB)
+        if (operadorB_float == 0):
+            alert(title = "Error", message = "No se puede dividir por cero")
+        else:
+            division = operadorA_float / operadorB_float
+            alert(title = "Resultado", message = "El resultado de la division es: " + "{:.2f}".format(division))
+        
         
 if __name__ == "__main__":
     app = App()
