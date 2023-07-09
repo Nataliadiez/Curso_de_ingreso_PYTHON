@@ -6,6 +6,11 @@ import customtkinter
 
 
 '''
+nombre: Natalia 
+apellido: Diez
+---
+Ejercicio: While_app_05
+---
 Enunciado:
 Al presionar el botón ‘Validar letra’, mediante prompt solicitar al usuario que ingrese una letra. 
 Se deberá validar que la letra sea ‘U’, ‘T’ o ‘N’ (en mayusculas) 

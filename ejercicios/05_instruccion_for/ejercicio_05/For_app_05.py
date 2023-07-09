@@ -5,6 +5,11 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
+nombre: Natalia 
+apellido: Diez
+---
+Ejercicio: For_app_05
+---
 Al presionar el botón Mostrar repetir el mensaje “¿Desea continuar?” (utilizando el Dialog QUESTION) 
 hasta que el usuario conteste que no (se deberá utilizar 'BREAK').
 '''

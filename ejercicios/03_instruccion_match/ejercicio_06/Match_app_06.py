@@ -6,6 +6,11 @@ import customtkinter
 
 
 '''
+nombre: Natalia 
+apellido: Diez
+---
+Ejercicio: match_app_06
+---
 Enunciado:
 Obtener la hora ingresada en el cuadro de texto txt_hora. 
 Al presionar el botón ‘Informar’ mostrar mediante alert alguno de los 

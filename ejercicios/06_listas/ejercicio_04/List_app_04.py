@@ -5,6 +5,11 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
+nombre: Natalia 
+apellido: Diez
+---
+Ejercicio: Listas_app_04
+---
 Al presionar el botón 'MÍNIMO' se analizará el vector lista_datos a efectos de determinar cuál es el número 
 más chico allí contenido el cual deberá ser informado utilizando Dialog Alert.
 '''

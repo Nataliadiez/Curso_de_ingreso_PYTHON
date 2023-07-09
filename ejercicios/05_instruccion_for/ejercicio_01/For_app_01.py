@@ -7,6 +7,11 @@ import random
 
 
 '''
+nombre: Natalia 
+apellido: Diez
+---
+Ejercicio: For_app_01
+---
 Al presionar el botón Mostrar 5 veces un mensaje (utilizando el Dialog Alert) con números ASCENDENTES, desde el 1 al 5.
 '''
 

@@ -5,6 +5,11 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
+nombre: Natalia 
+apellido: Diez
+---
+Ejercicio: For_app_06
+---
 Al presionar el botón Mostrar pedir un número. mostrar los números pares desde 
 el 1 al número ingresado, y mostrar la cantidad de números pares encontrados.
 '''

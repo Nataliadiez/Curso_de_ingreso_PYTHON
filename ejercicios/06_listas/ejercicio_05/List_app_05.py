@@ -5,6 +5,11 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
+nombre: Natalia 
+apellido: Diez
+---
+Ejercicio: Listas_app_05
+---
 Al presionar el botón 'SUMATORIA' se analizará el vector lista_datos a efectos de calcular 
 la suma de todos los valores, la cual deberá ser informada utilizando Dialog Alert.
 '''
