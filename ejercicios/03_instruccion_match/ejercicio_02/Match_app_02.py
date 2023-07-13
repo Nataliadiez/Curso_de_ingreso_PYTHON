@@ -45,12 +45,12 @@ class App(customtkinter.CTk):
         saludo = ""
 
         match mes:
-            case "Enero" | "Febrero" | "Marzo" | "Abril" | "Mayo" | "Junio":
-                saludo = "Falta para el invierno.."
-            case "Julio" | "Agosto":
-                saludo = "¡Abrígate que hace frío!"
             case "Septiembre" | "Octubre" | "Noviembre" | "Diciembre":
                 saludo = "¡Ya pasamos frío, ahora calor!"
+            case "Julio" | "Agosto":
+                saludo = "¡Abrígate que hace frío!"
+            case _:
+                saludo = "Falta para el invierno.."
 
 
         alert(title = "Mensaje", message = saludo)

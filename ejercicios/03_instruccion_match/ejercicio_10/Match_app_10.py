@@ -45,9 +45,42 @@ class App(customtkinter.CTk):
         self.btn_informar = customtkinter.CTkButton(master=self, text="Informar", command=self.btn_informar_on_click)
         self.btn_informar.grid(row=4, pady=20, columnspan=2, sticky="nsew")
         
+    """ Si es invierno: solo se viaja a Bariloche
+    Si es verano: se viaja a Mar del plata y Cataratas
+    Si es otoño: se viaja a todos los lugares
+    Si es primavera: se viaja a todos los lugares menos Bariloche """
     
     def btn_informar_on_click(self):
-        pass
+        estacion = self.combobox_estaciones.get()
+        destino = self.combobox_destino.get()
+        mensaje = ""
+        se_viaja = True
+
+        match estacion:
+            case "Invierno":
+                match destino:
+                    case "Bariloche":
+                        se_viaja = True
+                    case _:
+                        se_viaja = False
+            case "Verano":
+                match destino:
+                    case "Mar del plata" | "Cataratas":
+                        se_viaja = True
+                    case _:
+                        se_viaja = False
+            case "Primavera":
+                match destino:
+                    case "Bariloche":
+                        se_viaja = False
+
+                
+        if se_viaja:
+            mensaje = "Se viaja"
+        else:
+            mensaje = "No se viaja"
+
+        alert(title="mensaje", message=f"Destino: {destino}\nEstación: {estacion}\nEn esta epoca: {mensaje}")
             
     
 if __name__ == "__main__":

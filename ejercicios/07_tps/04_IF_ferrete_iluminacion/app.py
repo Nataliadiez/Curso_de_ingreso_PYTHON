@@ -60,28 +60,29 @@ class App(customtkinter.CTk):
 
         if(cantidad_int >= 6):
             porcentaje_descuento = DESCUENTO_50
-        elif(cantidad_int == 5 and argentina_luz):
-            porcentaje_descuento = DESCUENTO_40
-        elif (cantidad_int == 5 and not argentina_luz):
-            porcentaje_descuento = DESCUENTO_30
-        elif(cantidad_int == 4 and argentina_luz):
-            porcentaje_descuento = DESCUENTO_25
-        elif(cantidad_int == 4 and felipe_lamparas):
-            porcentaje_descuento = DESCUENTO_25
-        elif (cantidad_int == 4 and not argentina_luz):
-            porcentaje_descuento = DESCUENTO_20
-        elif (cantidad_int == 3 and argentina_luz):
-            porcentaje_descuento = DESCUENTO_15
-        elif (cantidad_int == 3 and felipe_lamparas):
-            porcentaje_descuento = DESCUENTO_10
-        elif (cantidad_int == 3 and not argentina_luz):
-            porcentaje_descuento = DESCUENTO_5
+        elif(cantidad_int == 5):
+            if (argentina_luz):
+                porcentaje_descuento = DESCUENTO_40
+            else:
+                porcentaje_descuento = DESCUENTO_30
+        elif(cantidad_int == 4):
+            if(argentina_luz or felipe_lamparas):
+                porcentaje_descuento = DESCUENTO_25
+            else:
+                porcentaje_descuento = DESCUENTO_20
+        elif (cantidad_int == 3):
+            if(argentina_luz):
+                porcentaje_descuento = DESCUENTO_15
+            elif(felipe_lamparas):
+                porcentaje_descuento = DESCUENTO_10
+            else:
+                porcentaje_descuento = DESCUENTO_5
         
         total = (PRECIO - (PRECIO *  porcentaje_descuento / 100)) * cantidad_int
 
         if (total >= 4000):
-            descuento_mas_4000 = total * 5 / 100
-            total = total - descuento_mas_4000
+            porcentaje_descuento += DESCUENTO_5
+            total = (PRECIO - (PRECIO *  (porcentaje_descuento) / 100)) * cantidad_int
 
         porcentaje_descuento_str = str(porcentaje_descuento)
         total_str = str(total)
