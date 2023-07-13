@@ -34,15 +34,19 @@ class App(customtkinter.CTk):
 
     def btn_mostrar_on_click(self):
         nota_aleatoria = random.randint(1, 10)
-        promocion_directa = nota_aleatoria == 6 or nota_aleatoria == 7 or nota_aleatoria == 8 or nota_aleatoria == 9 or nota_aleatoria == 10
-        aprobado = nota_aleatoria == 4 or nota_aleatoria == 5
-        desaprobado = nota_aleatoria == 1 or nota_aleatoria == 2 or nota_aleatoria == 3
-        if(promocion_directa):
-            alert(title="Resultado", message = f"Su nota es: {nota_aleatoria}.\nUsted promociona la materia.")
-        elif (aprobado):
-            alert(title="Resultado", message = f"Su nota es: {nota_aleatoria}.\nUsted aprueba la materia.")
-        elif(desaprobado):
-            alert(title="Resultado", message = f"Su nota es: {nota_aleatoria}.\nUsted desaprueba la materia.")
+        #promocion_directa = nota_aleatoria == 6 or nota_aleatoria == 7 or nota_aleatoria == 8 or nota_aleatoria == 9 or nota_aleatoria == 10
+        promocion_directa = nota_aleatoria > 5
+        aprobado = nota_aleatoria > 3
+        desaprobado = nota_aleatoria < 4
+
+        if promocion_directa:
+            mensaje = "Usted promociona la materia."
+        elif aprobado:
+            mensaje = "Usted aprueba la materia."
+        elif desaprobado:
+            mensaje = "Usted desaprueba la materia."
+
+        alert(title="Resultado", message=f"Su nota es: {nota_aleatoria}.\n{mensaje}")
 
 if __name__ == "__main__":
     app = App()

@@ -36,11 +36,15 @@ class App(customtkinter.CTk):
     def btn_mostrar_on_click(self):
         edad = self.txt_edad.get()
         edad_int = int(edad)
-        adolescente = edad_int > 12 and edad_int < 18
-        if not adolescente:
+        no_adolescente = edad_int < 13 or edad_int > 17
+        if no_adolescente:
             alert(title = "mensaje", message = "No es adolescente")
 
-        
+        # Esta es otra forma de resolverlo con not, si se puede evitar el not, es mejor evitarlo
+        """ adolescente = edad_int > 12 and edad_int < 18
+        if not adolescente:
+            alert(title = "mensaje", message = "No es adolescente")  """
+
         
     
 if __name__ == "__main__":

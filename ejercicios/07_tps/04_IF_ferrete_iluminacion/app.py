@@ -38,36 +38,55 @@ class App(customtkinter.CTk):
 
 
     def btn_calcular_on_click(self):
-        marca = self.combobox_marca.get()
-        cantidad = int(self.combobox_cantidad.get())
-        total_sin_desceunto = 800 * cantidad
-        if(cantidad >= 6):
-            total_con_desceunto = total_sin_desceunto * 0.5
-        elif(cantidad == 5):
-            if(marca == "ArgentinaLuz"):
-                total_con_desceunto = total_sin_desceunto * 0.6
-            else:
-                total_con_desceunto = total_sin_desceunto * 0.7
-        elif(cantidad == 4):
-            if(marca == "ArgentinaLuz" or marca == "FelipeLamparas" ):
-                total_con_desceunto = total_sin_desceunto * 0.75
-            else:
-                total_con_desceunto = total_sin_desceunto * 0.80
-        elif(cantidad == 3):
-            if(marca == "ArgentinaLuz"):
-                total_con_desceunto = total_sin_desceunto * 0.85
-            elif(marca == "FelipeLamparas" ):
-                total_con_desceunto = total_sin_desceunto * 0.90
-            else:
-                total_con_desceunto = total_sin_desceunto * 0.95
-        else:
-            total_con_desceunto = total_sin_desceunto
-        if(total_con_desceunto > 4000):
-            total_con_desceunto = total_sin_desceunto * 0.95
+        PRECIO = 800
+        DESCUENTO_50 = 50
+        DESCUENTO_40 = 40
+        DESCUENTO_30 = 30
+        DESCUENTO_25 = 25
+        DESCUENTO_20 = 20
+        DESCUENTO_15 = 15
+        DESCUENTO_10 = 10
+        DESCUENTO_5 = 5
+        porcentaje_descuento = 0
+        total = 0
 
+        marca = self.combobox_marca.get()
+        cantidad = self.combobox_cantidad.get()
+
+        cantidad_int = int(cantidad)
+        argentina_luz = marca == "ArgentinaLuz"
+        felipe_lamparas = marca == "FelipeLamparas"
+
+
+        if(cantidad_int >= 6):
+            porcentaje_descuento = DESCUENTO_50
+        elif(cantidad_int == 5 and argentina_luz):
+            porcentaje_descuento = DESCUENTO_40
+        elif (cantidad_int == 5 and not argentina_luz):
+            porcentaje_descuento = DESCUENTO_30
+        elif(cantidad_int == 4 and argentina_luz):
+            porcentaje_descuento = DESCUENTO_25
+        elif(cantidad_int == 4 and felipe_lamparas):
+            porcentaje_descuento = DESCUENTO_25
+        elif (cantidad_int == 4 and not argentina_luz):
+            porcentaje_descuento = DESCUENTO_20
+        elif (cantidad_int == 3 and argentina_luz):
+            porcentaje_descuento = DESCUENTO_15
+        elif (cantidad_int == 3 and felipe_lamparas):
+            porcentaje_descuento = DESCUENTO_10
+        elif (cantidad_int == 3 and not argentina_luz):
+            porcentaje_descuento = DESCUENTO_5
         
-        alert(title="Alert", message="El valor final con descuento es: " + str(total_con_desceunto))
-        
+        total = (PRECIO - (PRECIO *  porcentaje_descuento / 100)) * cantidad_int
+
+        if (total >= 4000):
+            descuento_mas_4000 = total * 5 / 100
+            total = total - descuento_mas_4000
+
+        porcentaje_descuento_str = str(porcentaje_descuento)
+        total_str = str(total)
+
+        alert(title = "Final", message = "Cantidad de lámparas: " + cantidad + "\nMarca: " + marca + "\nDescuento: %" + porcentaje_descuento_str + "\nSaldo final: $" + total_str)
     
 if __name__ == "__main__":
     app = App()

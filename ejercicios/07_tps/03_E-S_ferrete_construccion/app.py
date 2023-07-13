@@ -8,7 +8,7 @@ import customtkinter
 Enunciado:
 
 2.	El departamento de Construcción Rural requiere una herramienta que facilite el calculo de materiales necesarios 
-a la hora de realizar un alambrado permetral, se le solicita al usuario que ingrese el ancho y el largo del terreno.
+a la hora de realizar un alambrado perimetral, se le solicita al usuario que ingrese el ancho y el largo del terreno.
 
     A. Informar los metros cuadrados del terreno y los metros lineales del perimetro
     B. Informar la cantidad de postes de quebracho Grueso de 2.4 mts (van cada 250 mts lineales y en las esquinas).
@@ -37,8 +37,9 @@ a la hora de realizar un alambrado permetral, se le solicita al usuario que ingr
     
 '''
 
+
 class App(customtkinter.CTk):
-    
+
     def __init__(self):
         super().__init__()
 
@@ -47,27 +48,34 @@ class App(customtkinter.CTk):
 
         self.label_1 = customtkinter.CTkLabel(master=self, text="Largo")
         self.label_1.grid(row=0, column=0, padx=20, pady=10)
-        
+
         self.txt_largo = customtkinter.CTkEntry(master=self)
         self.txt_largo.grid(row=0, column=1)
 
         self.label_2 = customtkinter.CTkLabel(master=self, text="Ancho")
         self.label_2.grid(row=1, column=0, padx=20, pady=10)
-        
+
         self.txt_ancho = customtkinter.CTkEntry(master=self)
         self.txt_ancho.grid(row=1, column=1)
-       
-        self.btn_calcular = customtkinter.CTkButton(master=self, text="CALCULAR", command=self.btn_calcular_on_click)
+
+        self.btn_calcular = customtkinter.CTkButton(
+            master=self, text="CALCULAR", command=self.btn_calcular_on_click)
         self.btn_calcular.grid(row=3, pady=10, columnspan=2, sticky="nsew")
-        
 
     def btn_calcular_on_click(self):
-        largo = int(self.txt_largo.get()) 
-        ancho = int(self.txt_ancho.get())
-        total_m2 = largo * ancho
-        alert(title="Alert", message="El resultado total de metros cuadrados es: " + str(total_m2))
-    
-    
+        largo = self.txt_largo.get()
+        ancho = self.txt_ancho.get()
+
+        largo_float = float(largo)
+        ancho_float = float(ancho)
+
+        #calcular área y superficie
+        area = largo_float * ancho_float
+        superficie = (largo_float + ancho_float) / 2
+
+        
+
+
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")

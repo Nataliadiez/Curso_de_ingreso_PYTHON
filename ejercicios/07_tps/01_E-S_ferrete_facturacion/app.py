@@ -37,7 +37,7 @@ class App(customtkinter.CTk):
         
         self.txt_importe_3 = customtkinter.CTkEntry(master=self)
         self.txt_importe_3.grid(row=2, column=1)
-       
+
         self.btn_total = customtkinter.CTkButton(master=self, text="TOTAL", command=self.btn_total_on_click)
         self.btn_total.grid(row=3, pady=10, columnspan=2, sticky="nsew")
         
@@ -48,18 +48,55 @@ class App(customtkinter.CTk):
         self.btn_total_iva.grid(row=5, pady=10, columnspan=2, sticky="nsew")
 
     def btn_total_on_click(self):
-        total = int(self.txt_importe_1.get()) + int(self.txt_importe_2.get()) + int(self.txt_importe_3.get())
-        alert(title="Alert", message="El resultado total sin iva es: " + str(total))
+        precio_1 = self.txt_importe_1.get()
+        precio_2 = self.txt_importe_2.get()
+        precio_3 = self.txt_importe_3.get()
 
+        precio_1_float = float(precio_1)
+        precio_2_float = float(precio_2)
+        precio_3_float = float(precio_3)
+
+        suma = precio_1_float + precio_2_float + precio_3_float
+        suma_str = str(suma)
+
+        alert(title = "Precio total", message = f"La suma es de: " + suma_str)
     def btn_promedio_on_click(self):
-        total = int(self.txt_importe_1.get()) + int(self.txt_importe_2.get()) + int(self.txt_importe_3.get())
-        promedio = total / 3
-        alert(title="Alert", message="El valor promedio es: " + str(promedio))
+        #Declaración de variables
+        CANTIDAD_DE_PRODUCTOS = 3
+
+        #Entrada
+        precio_1 = self.txt_importe_1.get()
+        precio_2 = self.txt_importe_2.get()
+        precio_3 = self.txt_importe_3.get()
+
+        #Proceso
+        precio_1_float = float(precio_1)
+        precio_2_float = float(precio_2)
+        precio_3_float = float(precio_3)
+        suma = precio_1_float + precio_2_float + precio_3_float
+        promedio = suma/3
+
+        #Salida
+        alert(title = "Precio total", message = "El promedio es de: " + "{:.2f}".format(promedio))
 
     def btn_total_iva_on_click(self):
-        total = int(self.txt_importe_1.get()) + int(self.txt_importe_2.get()) + int(self.txt_importe_3.get())
-        total_c_iva = total * 1.21
-        alert(title="Alert", message="El resultado total sin iva es: " + str(total_c_iva))        
+        #Declaración de variables
+        IVA = 1.21
+
+        #Entrada
+        precio_1 = self.txt_importe_1.get()
+        precio_2 = self.txt_importe_2.get()
+        precio_3 = self.txt_importe_3.get()
+
+        #Proceso
+        precio_1_float = float(precio_1)
+        precio_2_float = float(precio_2)
+        precio_3_float = float(precio_3)
+        suma = precio_1_float + precio_2_float + precio_3_float
+        calculo_iva = suma * IVA
+
+        #Salida
+        alert(title = "Precio total", message = "El total + IVA es de: " + "{:.2f}".format(calculo_iva))
     
 if __name__ == "__main__":
     app = App()

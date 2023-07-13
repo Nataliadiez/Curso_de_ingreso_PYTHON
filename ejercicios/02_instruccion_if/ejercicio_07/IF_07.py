@@ -52,14 +52,13 @@ class App(customtkinter.CTk):
         naturalizado = tipo == "NATURALIZADO"
         nativo_y_mayor = mayor_de_16 and nativo
         naturalizado_y_mayor = mayor_de_18 and naturalizado
-        print("Nativo y mayor", nativo_y_mayor)
-        if (nativo_y_mayor):
-            alert(title = "mensaje", message = f"edad: {edad} y tipo: {tipo}.\nPuede votar.")
-        elif(naturalizado_y_mayor):
-            alert(title = "mensaje", message = f"edad: {edad} y tipo: {tipo}.\nPuede votar.")
+
+        if nativo_y_mayor or naturalizado_y_mayor:
+            mensaje = "Puede votar"
         else:
-            alert(title = "mensaje", message = f"edad: {edad} y tipo: {tipo}.\nUsted no puede votar.")
+            mensaje = "No puede votar"
         
+        alert(title = "mensaje", message = mensaje)
         
         
     
