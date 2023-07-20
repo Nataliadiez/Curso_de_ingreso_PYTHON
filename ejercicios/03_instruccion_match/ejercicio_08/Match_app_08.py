@@ -34,7 +34,6 @@ class App(customtkinter.CTk):
     
     def btn_informar_on_click(self):
         destino = self.combobox_destino.get()
-        clima = ""
 
         match destino:
             case "Bariloche" | "Ushuaia":

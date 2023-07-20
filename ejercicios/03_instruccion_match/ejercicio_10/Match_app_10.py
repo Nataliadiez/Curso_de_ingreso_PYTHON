@@ -60,7 +60,7 @@ class App(customtkinter.CTk):
             case "Invierno":
                 match destino:
                     case "Bariloche":
-                        se_viaja = True
+                        se_viaja = True #eliminar aquellos en los que no se viaja
                     case _:
                         se_viaja = False
             case "Verano":

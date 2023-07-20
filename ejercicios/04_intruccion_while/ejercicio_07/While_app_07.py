@@ -37,8 +37,27 @@ class App(customtkinter.CTk):
 
 
     def btn_comenzar_ingreso_on_click(self):
-        pass
+        suma = 0
+        acumulador = 0
+        numeros = prompt(title="Números", prompt="Ingrese números (cancelar para finalizar):")
+        
+        while numeros != None and numeros != "":
+            numeros = int(numeros)
+            acumulador += 1
+            suma += numeros
+            numeros = prompt(title="Números", prompt="Ingrese números (cancelar para finalizar):")
 
+        if acumulador != 0:
+            promedio = suma / acumulador
+
+            self.txt_suma_acumulada.delete(0, 100)
+            self.txt_promedio.delete(0, 100)
+            self.txt_suma_acumulada.insert(0, str(suma))
+            self.txt_promedio.insert(0, str(promedio))
+        else:
+            alert(title="Error", message="No se puede realizar la división.")
+        
+        
     
 if __name__ == "__main__":
     app = App()

@@ -34,7 +34,7 @@ class App(customtkinter.CTk):
         self.txt_edad = customtkinter.CTkEntry(master=self)
         self.txt_edad.grid(row=1, column=1)
 
-        self.label2 = customtkinter.CTkLabel(master=self, text="Estado")
+        self.label2 = customtkinter.CTkLabel(master=self, text="Estado civil")
         self.label2.grid(row=2, column=0, padx=20, pady=10)
         self.combobox_tipo = customtkinter.CTkComboBox(
             master=self, values=["Soltero/a", "Casado/a", "Divorciado/a", "Viudo/a"])
@@ -49,8 +49,21 @@ class App(customtkinter.CTk):
             master=self, text="Validar", command=self.btn_validar_on_click)
         self.btn_validar.grid(row=4, pady=20, columnspan=2, sticky="nsew")
 
+    """ Los datos requeridos son los siguientes:
+        Apellido
+        Edad, entre 18 y 90 años inclusive.
+        Estado civil, ["Soltero/a", "Casado/a", "Divorciado/a", "Viudo/a"]
+        Número de legajo, numérico de 4 cifras, sin ceros a la izquierda.
+    """
+
     def btn_validar_on_click(self):
-        pass
+        apellido = self.txt_apellido.get()
+        legajo = self.txt_legajo.get()
+        edad = self.txt_edad.get()
+        estado_civil = self.combobox_tipo.get()
+
+        
+
 
 
 if __name__ == "__main__":

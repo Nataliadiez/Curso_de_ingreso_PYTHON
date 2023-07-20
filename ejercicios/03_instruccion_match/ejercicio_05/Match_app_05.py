@@ -40,7 +40,7 @@ class App(customtkinter.CTk):
         mensaje = ""
 
         match hora_int:
-            case 7 | 8 | 9 | 10 | 11:
+            case hora_int if hora_int > 6 and hora_int < 12:
                 mensaje = "Es de mañana"
 
         if mensaje != "":

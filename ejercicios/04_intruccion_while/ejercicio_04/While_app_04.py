@@ -32,11 +32,11 @@ class App(customtkinter.CTk):
     def btn_validar_numero_on_click(self):
         numero = prompt(title = "Validar número", prompt = "Ingrese un número")
         numero_int = int(numero)
-        while(numero_int > 9 or numero_int < 0):
-            alert(title = "Error", message = "El número no coincide")
-            break
+        while (numero_int > 9 or numero_int < 0):
+            numero = prompt(title = "Error", prompt = "Ingrese un número")
+            numero_int = int(numero)
         else:
-            alert(title = "Correcto", message = f"El número {numero} está dentro del rango.")
+            alert(title="Correcto", message = f"El número {numero} está dentro del rango.")
     
 if __name__ == "__main__":
     app = App()

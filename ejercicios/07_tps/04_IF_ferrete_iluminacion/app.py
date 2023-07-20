@@ -4,6 +4,10 @@ from tkinter.messagebox import askyesno as question
 from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
+"""
+Apellido: Diez
+Nombre: Natalia 
+"""
 '''
 Todas las lámparas están  al mismo precio de $800 pesos final.
 		A.	Si compra 6 o más  lamparitas bajo consumo tiene un descuento del 50%. 
@@ -39,14 +43,6 @@ class App(customtkinter.CTk):
 
     def btn_calcular_on_click(self):
         PRECIO = 800
-        DESCUENTO_50 = 50
-        DESCUENTO_40 = 40
-        DESCUENTO_30 = 30
-        DESCUENTO_25 = 25
-        DESCUENTO_20 = 20
-        DESCUENTO_15 = 15
-        DESCUENTO_10 = 10
-        DESCUENTO_5 = 5
         porcentaje_descuento = 0
         total = 0
 
@@ -54,34 +50,37 @@ class App(customtkinter.CTk):
         cantidad = self.combobox_cantidad.get()
 
         cantidad_int = int(cantidad)
-        argentina_luz = marca == "ArgentinaLuz"
-        felipe_lamparas = marca == "FelipeLamparas"
 
+        #con match
+        match(cantidad_int):
+            case 6 | 7 | 8 | 9 | 10 | 11 | 12:
+                porcentaje_descuento = 50
+            case 5:
+                match(marca):
+                    case "ArgentinaLuz":
+                        porcentaje_descuento = 40
+                    case _:
+                        porcentaje_descuento = 30
+            case 4:
+                match(marca):
+                    case "ArgentinaLuz" | "FelipeLamparas":
+                        porcentaje_descuento = 25
+                    case _:
+                        porcentaje_descuento = 20
+            case 3:
+                match(marca):
+                    case "ArgentinaLuz":
+                        porcentaje_descuento = 15
+                    case "FelipeLamparas":
+                        porcentaje_descuento = 10
+                    case _:
+                        porcentaje_descuento = 5
 
-        if(cantidad_int >= 6):
-            porcentaje_descuento = DESCUENTO_50
-        elif(cantidad_int == 5):
-            if (argentina_luz):
-                porcentaje_descuento = DESCUENTO_40
-            else:
-                porcentaje_descuento = DESCUENTO_30
-        elif(cantidad_int == 4):
-            if(argentina_luz or felipe_lamparas):
-                porcentaje_descuento = DESCUENTO_25
-            else:
-                porcentaje_descuento = DESCUENTO_20
-        elif (cantidad_int == 3):
-            if(argentina_luz):
-                porcentaje_descuento = DESCUENTO_15
-            elif(felipe_lamparas):
-                porcentaje_descuento = DESCUENTO_10
-            else:
-                porcentaje_descuento = DESCUENTO_5
         
         total = (PRECIO - (PRECIO *  porcentaje_descuento / 100)) * cantidad_int
 
-        if (total >= 4000):
-            porcentaje_descuento += DESCUENTO_5
+        if (total > 4000):
+            porcentaje_descuento += 5
             total = (PRECIO - (PRECIO *  (porcentaje_descuento) / 100)) * cantidad_int
 
         porcentaje_descuento_str = str(porcentaje_descuento)

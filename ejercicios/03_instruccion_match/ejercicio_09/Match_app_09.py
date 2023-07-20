@@ -70,7 +70,7 @@ class App(customtkinter.CTk):
                         descuento = 20
                     case "Mar del plata":
                         aumento = 20
-                    case "Cordoba" | "Cataratas":
+                    case _: 
                         aumento = 10
             case "Invierno":
                 match destino:
@@ -78,7 +78,7 @@ class App(customtkinter.CTk):
                         aumento = 20
                     case "Mar del plata":
                         descuento = 20
-                    case "Cordoba" | "Cataratas":
+                    case _:
                         descuento = 10
             case _:
                 match destino:
@@ -90,7 +90,7 @@ class App(customtkinter.CTk):
         else:
             estadia_final = COSTO_ESTADIA - (COSTO_ESTADIA * descuento / 100)
         
-        alert(title="mensaje", message= f"El destino es: {destino}\nLa estación del año es: {estacion}\nEl porcentaje de aumento es: {aumento} y el de descuento: {descuento}\nEl total a abonar por la estadía es: ${estadia_final}")
+        alert(title="mensaje", message= f"El destino es: {destino}\nLa estación del año es: {estacion}\nEl porcentaje de aumento es: {aumento}% y el de descuento: {descuento}%\nEl total a abonar por la estadía es: ${estadia_final}")
 
 if __name__ == "__main__":
     app = App()

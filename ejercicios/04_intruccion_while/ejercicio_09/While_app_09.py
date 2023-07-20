@@ -35,27 +35,31 @@ class App(customtkinter.CTk):
         self.btn_mostrar = customtkinter.CTkButton(master=self, text="Comenzar Ingreso", command=self.btn_comenzar_ingreso_on_click)
         self.btn_mostrar.grid(row=2, padx=20, pady=20, columnspan=2, sticky="nsew")
 
-
+    #Mejorar mi ejercicio con bandera y eliminar la inicialización de maximo y minimo
     def btn_comenzar_ingreso_on_click(self):
-
-        flag_primera_vez = True
-        prompt_result = ""
-        
-        while prompt_result != None:
-            prompt_result = prompt(title="Prompt", prompt="Ingrese un número")
-            if prompt_result != None: 
-                numero_ingresado = int(prompt_result)
+        flag_primer_ingreso = True
+            
+        while True:
+            numeros = prompt(title="Número", prompt="Ingrese un número")
+            
+            if numeros == None or numeros == "":
+                break
+            numeros = int(numeros)
                 
-                if  numero_ingresado < minimo or flag_primera_vez == True:
-                    minimo = numero_ingresado
-                if  numero_ingresado > maximo or flag_primera_vez == True:
-                    maximo = numero_ingresado
-                    flag_primera_vez = False
-                            
-        self.txt_minimo.delete(0,100)
-        self.txt_minimo.insert(0, minimo)
-        self.txt_maximo.delete(0,100)
-        self.txt_maximo.insert(0, maximo)
+            if flag_primer_ingreso:
+                minimo = numeros
+                maximo = numeros
+                flag_primer_ingreso = False
+            elif numeros > maximo:
+                maximo = numeros
+            elif numeros < minimo:
+                minimo = numeros
+
+            self.txt_maximo.delete(0, 100)
+            self.txt_minimo.delete(0, 100)
+            self.txt_minimo.insert(0, minimo)
+            self.txt_maximo.insert(0, maximo)
+
 
 
     
