@@ -3,13 +3,13 @@ from tkinter.messagebox import showinfo as alert
 from tkinter.messagebox import askyesno as question
 from tkinter.simpledialog import askstring as prompt
 import customtkinter
-
+"""
+Apellido: Diez
+Nombre: Natalia
+---
+Ejercicio 06 FOR
+"""
 '''
-nombre: Natalia 
-apellido: Diez
----
-Ejercicio: For_app_06
----
 Al presionar el botón Mostrar pedir un número. mostrar los números pares desde 
 el 1 al número ingresado, y mostrar la cantidad de números pares encontrados.
 '''
@@ -24,12 +24,22 @@ class App(customtkinter.CTk):
         
         self.btn_mostrar = customtkinter.CTkButton(master=self, text="Mostrar", command=self.btn_mostrar_on_click)
         self.btn_mostrar.grid(row=2, pady=20, columnspan=2, sticky="nsew")
-
+    '''
+    Al presionar el botón Mostrar pedir un número. mostrar los números pares desde 
+    el 1 al número ingresado, y mostrar la cantidad de números pares encontrados.
+    '''
 
     def btn_mostrar_on_click(self):
-        pass
+        numeros = prompt(title="Números", prompt="Ingrese un número")
+        numeros = int(numeros)
+        pares = 0
+
+        for i in range(1, numeros, 1):
+            if i % 2 == 0:
+                alert(title="Números pares", message=i)
+                pares += 1
+        alert(title="Cantidad", message="Cantidad de números pares {0}".format(pares))
         
-    
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")

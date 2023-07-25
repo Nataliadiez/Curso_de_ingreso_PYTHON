@@ -5,10 +5,10 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
-nombre: Natalia 
-apellido: Diez
+Nombre: Natalia 
+Apellido: Diez
 ---
-Ejercicio: Listas_app_05
+Ejercicio: List_app_05
 ---
 Al presionar el botón 'SUMATORIA' se analizará el vector lista_datos a efectos de calcular 
 la suma de todos los valores, la cual deberá ser informada utilizando Dialog Alert.
@@ -29,7 +29,13 @@ class App(customtkinter.CTk):
 
 
     def btn_calcular_on_click(self):
-        pass
+        lista_datos = self.lista_datos
+        suma = 0
+
+        for elemento in lista_datos:
+            suma += elemento
+        
+        alert(title="suma", message=f"La suma del listado es: {suma}")
     
 if __name__ == "__main__":
     app = App()

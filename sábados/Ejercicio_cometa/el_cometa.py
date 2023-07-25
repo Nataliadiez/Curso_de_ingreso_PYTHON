@@ -4,6 +4,7 @@ from tkinter.messagebox import askyesno as question
 from tkinter.simpledialog import askstring as prompt
 import customtkinter
 import tkinter as tk
+import math
 
 '''
 La juguetería El MUNDO DE OCTAVIO nos encarga un programa para conocer qué cantidad de materiales se necesita para la fabricación de distintos juguetes.
@@ -66,16 +67,18 @@ class App(customtkinter.CTk):
         diametro_menor = self.txt_diametro_menor.get()
         lados_menores = self.txt_lados_menores.get()
         lados_mayores = self.txt_lados_mayores.get()
-
+        diametro_menor = float(diametro_menor)
+        lados_menores = float(lados_menores)
+        lados_mayores = float(lados_mayores)
         
-        diametro_menor_float = float(diametro_menor)
-        lados_menores_float = float(lados_menores)
-        lados_mayores_float = float(lados_mayores)
-        diametro_mayor = ((lados_mayores_float * 2) + diametro_menor_float) / 2
-
+        #cálculo diámetro mayor
+        mitad_D_C = diametro_menor / 2
+        A_diametro_mayor = math.sqrt(abs(lados_mayores**2 - mitad_D_C**2))
+        B_diamentro_mayor = math.sqrt(abs(lados_menores**2 - mitad_D_C**2))
+        diametro_mayor = A_diametro_mayor + B_diamentro_mayor
+        
         #cálculo perímetro
-        perimetro_cometa = (lados_menores_float + lados_mayores_float) * 2
-
+        estructura = lados_menores + diametro_mayor
         
 
     

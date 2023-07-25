@@ -14,12 +14,12 @@ Enunciado:
 Al presionar el botón ‘Comenzar ingreso’, solicitar mediante prompt todos los números que el usuario 
 quiera hasta que presione el botón Cancelar (en el prompt). 
 Luego calcular:
-    La suma acumulada de los negativos YA TA
-    La suma acumulada de los positivos YA TA
-    Cantidad de números positivos ingresados YA TA
-    Cantidad de números negativos ingresados YA TA
+    La suma acumulada de los negativos
+    La suma acumulada de los positivos
+    Cantidad de números positivos ingresados
+    Cantidad de números negativos ingresados
     Cantidad de ceros
-    Diferencia entre la cantidad de los números positivos ingresados y los negativos YA TA
+    Diferencia entre la cantidad de los números positivos ingresados y los negativos
 
 Informar los resultados mediante alert()
 

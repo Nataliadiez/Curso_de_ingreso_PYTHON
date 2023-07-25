@@ -4,8 +4,7 @@ from tkinter.messagebox import askyesno as question
 from tkinter.simpledialog import askstring as prompt
 from datetime import time
 import customtkinter
-import threading
-import time
+
 
 '''
 Enunciado:
@@ -21,19 +20,11 @@ class App(customtkinter.CTk):
         # configure window
         self.title("UTN Fra")
 
-        self.btn_mostrar = customtkinter.CTkButton(master=self, text="Iniciar", command=self.btn_mostrar_on_click)
+        self.btn_mostrar = customtkinter.CTkButton(master=self, text="Mostrar", command=self.btn_mostrar_on_click)
         self.btn_mostrar.grid(row=1, pady=10, columnspan=2, sticky="nsew")
 
     def btn_mostrar_on_click(self):
-        
-        def saludo ():
-            alert(title = "Saludo", message = "Bienvenidos a la UTN FRA")
-        
-        timer = threading.Timer(3, saludo)
-        timer.start()
-        
-        
-        
+        pass
         
 
 if __name__ == "__main__":

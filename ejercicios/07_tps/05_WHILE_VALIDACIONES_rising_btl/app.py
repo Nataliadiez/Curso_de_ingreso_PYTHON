@@ -5,6 +5,11 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
+Apellido: Diez
+Nombre: Natalia
+---
+TP 01 WHILE
+---
 Rising BTL. Empresa dedicada a la toma de datos para realizar estadísticas y censos nos pide realizar una carga de datos validada e ingresada 
 por ventanas emergentes solamente (para evitar hacking y cargas maliciosas) y luego asignarla a cuadros de textos. 
 
@@ -57,11 +62,58 @@ class App(customtkinter.CTk):
     """
 
     def btn_validar_on_click(self):
-        apellido = self.txt_apellido.get()
-        legajo = self.txt_legajo.get()
-        edad = self.txt_edad.get()
-        estado_civil = self.combobox_tipo.get()
+        
+        while True:
+            apellido = prompt(title="apellido", prompt="Ingrese su apellido")
+            if apellido == "" or apellido == None:
+                continue
+            else:
+                break
 
+        while True:
+            edad = prompt(title="edad", prompt="Ingrese su edad (entre 18 y 90 años)")
+            if edad == "" or edad == None:
+                continue
+            else:
+                edad = int(edad)
+            
+            if edad < 18 or edad > 90:
+                continue
+            else:
+                break
+        
+        while True:
+            estado_civil = prompt(title="estado_civil", prompt="Ingrese su estado_civil")
+            if estado_civil == "" or estado_civil == None:
+                continue
+            elif estado_civil != "Soltero/a" and estado_civil != "Casado/a" and estado_civil != "Divorciado/a" and estado_civil != "Viudo/a":
+                continue
+            else:
+                break
+        
+        while True:
+            legajo = prompt(title="legajo", prompt="Ingrese su número legajo (4 cifras, sin ceros a la izquierda)")
+            print(legajo[0])
+            if legajo == "" or legajo == None:
+                continue
+            elif len(legajo) != 4:
+                continue
+            elif legajo[0] == "0":
+                continue
+            else:
+                legajo = int(legajo)
+                break
+
+
+
+    
+        self.txt_apellido.delete(0, 100)
+        self.txt_edad.delete(0, 100)
+        self.txt_legajo.delete(0, 100)
+        self.txt_apellido.insert(0, apellido)
+        self.txt_edad.insert(0, edad)
+        self.combobox_tipo.set(estado_civil)
+        self.txt_legajo.insert(0, legajo)
         
 
 

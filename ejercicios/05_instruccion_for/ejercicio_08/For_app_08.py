@@ -4,12 +4,13 @@ from tkinter.messagebox import askyesno as question
 from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
+"""
+Apellido: Diez
+Nombre: Natalia
+---
+Ejercicio 08 FOR
+"""
 '''
-nombre: Natalia 
-apellido: Diez
----
-Ejercicio: For_app_08
----
 Al presionar el botón Mostrar pedir un número. Informar si el número es PRIMO o no.
 '''
 
@@ -26,7 +27,21 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        pass
+        numero = prompt(title="numero", prompt="Ingrese un número para saber si es primo o no.")
+        numero = int(numero)
+        divisores = 0
+
+        for i in range(1, numero, 1):
+            if numero % i == 0:
+                divisores += 1
+            
+
+        if divisores > 2:
+            print("No es un número primo")
+        else:
+            print("Es un número primo")
+
+            
     
 if __name__ == "__main__":
     app = App()

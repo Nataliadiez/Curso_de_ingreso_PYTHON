@@ -3,13 +3,14 @@ from tkinter.messagebox import showinfo as alert
 from tkinter.messagebox import askyesno as question
 from tkinter.simpledialog import askstring as prompt
 import customtkinter
+"""
+Apellido: Diez
+Nombre: Natalia
+---
+Ejercicio 07 FOR
+"""
 
 '''
-nombre: Natalia 
-apellido: Diez
----
-Ejercicio: For_app_07
----
 Al presionar el botón Mostrar pedir un número. mostrar los números divisores desde el 1 al número ingresado, 
 y mostrar la cantidad de números divisores encontrados.
 '''
@@ -27,8 +28,17 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        pass
-        
+        numero = prompt(title="Número", prompt="Ingrese un número para buscar sus divisores:")
+        numero = int(numero)
+        total_divisores = 0
+
+        for i in range(1, numero, 1):
+            if numero % i == 0:
+                alert(title="Divisores", message="Divisores: {0}".format(i))
+                total_divisores += 1
+        alert(title="Total divisores", message="Total de divisores: {0}".format(total_divisores))
+
+            
     
 if __name__ == "__main__":
     app = App()
