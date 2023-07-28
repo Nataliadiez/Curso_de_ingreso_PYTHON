@@ -66,6 +66,7 @@ class App(customtkinter.CTk):
         votos_giovanni = 0
         votos_facundo = 0
 
+#MODIFICAR ESTE EJERCICIO PARA PODER PONER UN WHILE POR CADA VALIDACIÓN
         while True:
             nombre_votante = prompt(title="nombre", prompt="Ingrese su nombre:")
             if nombre_votante == "" or nombre_votante == None:

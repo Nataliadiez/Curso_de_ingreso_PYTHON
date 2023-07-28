@@ -50,7 +50,7 @@ class App(customtkinter.CTk):
         
     def btn_validar_on_click(self): 
         #inicialización de contadores, flags y acumuladores
-        flag_menor_edad = True
+        bandera_jr_menor_edad = True
         edades_femeninas = 0
         edades_masculinas = 0
         edades_no_binarias = 0
@@ -67,6 +67,7 @@ class App(customtkinter.CTk):
 
         for _ in iter(int, 1):
             #Entrada y validación de campos vacíos y de información válida
+            #Transformar todo a for porque sólo son 10 postulantes
             nombre = prompt(title="nombre", prompt="Ingrese su nombre:")
             if nombre == "" or nombre == None:
                 alert(title="Error", message="Debe llenar el campo de nombre")
@@ -111,10 +112,10 @@ class App(customtkinter.CTk):
                 postulantes_NB_Ssr += 1
 
             #validación postulante Jr de menor edad
-            if flag_menor_edad and puesto == "Jr":
+            if bandera_jr_menor_edad and puesto == "Jr":
                 edad_postulante_menor = edad
                 nombre_postulante_menor = nombre
-                flag_menor_edad = False
+                bandera_jr_menor_edad = False
             elif edad < edad_postulante_menor:
                 edad_postulante_menor = edad
                 nombre_postulante_menor = nombre
